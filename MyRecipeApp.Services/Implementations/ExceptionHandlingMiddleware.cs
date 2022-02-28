@@ -25,7 +25,7 @@ namespace MyRecipeApp.Services.Implementations
             {
                 await next(context);
             }
-            catch (Exception ex)    
+            catch (Exception ex)
             {
                 await HandleExceptionAsync(context, ex);
             }
