@@ -23,7 +23,7 @@ namespace MyRecipeApp.Context
         {
             Ingredient peanutButter = new Ingredient() { Name = "Peanut Butter" };
             Ingredient jelly = new Ingredient() { Name = "Jelly" };
-            Ingredient bread = new Ingredient() { Name = "Peanut Butter" };
+            Ingredient bread = new Ingredient() { Name = "Bread" };
             Ingredient chocolate = new Ingredient() { Name = "Chocolate" };
             Ingredient sugar = new Ingredient() { Name = "Sugar" };
             Ingredient cheese = new Ingredient() { Name = "Cheese" };
@@ -56,11 +56,11 @@ namespace MyRecipeApp.Context
             RecipeIngredient sandwichBread = new RecipeIngredient() { Recipe = gcs, Ingredient = bread };
             RecipeIngredient sandwichCheese = new RecipeIngredient() { Recipe = gcs, Ingredient = cheese };
 
-            pbj.RecipeIngredient = new List<RecipeIngredient>() { pbjButter, pbjJelly, pbjBread };
-            buckeyes.RecipeIngredient = new List<RecipeIngredient>() { buckeyesChocolate, buckeyesButter, buckeyesSugar };
-            hawaiianPizza.RecipeIngredient = new List<RecipeIngredient>() { pizzaCheese, pizzaPizzaDough, pizzaSauce, pizzaPineapple, pizzaBacon };
-            hotChocolate.RecipeIngredient = new List<RecipeIngredient>() { hotChocolateMilk, hotChocolateChocolate, hotChocolateSugar };
-            gcs.RecipeIngredient = new List<RecipeIngredient>() { sandwichBread, sandwichCheese };
+            pbj.RecipeIngredients = new List<RecipeIngredient>() { pbjButter, pbjJelly, pbjBread };
+            buckeyes.RecipeIngredients = new List<RecipeIngredient>() { buckeyesChocolate, buckeyesButter, buckeyesSugar };
+            hawaiianPizza.RecipeIngredients = new List<RecipeIngredient>() { pizzaCheese, pizzaPizzaDough, pizzaSauce, pizzaPineapple, pizzaBacon };
+            hotChocolate.RecipeIngredients = new List<RecipeIngredient>() { hotChocolateMilk, hotChocolateChocolate, hotChocolateSugar };
+            gcs.RecipeIngredients = new List<RecipeIngredient>() { sandwichBread, sandwichCheese };
 
             if (!Ingredients.Any())
             {

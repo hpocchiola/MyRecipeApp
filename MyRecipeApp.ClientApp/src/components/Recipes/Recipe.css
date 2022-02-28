@@ -1,0 +1,16 @@
+.recipes-grid {
+    margin-top: 30px;
+}
+
+.recipe-card-grid {
+    padding-top: 10px;
+}
+
+.recipe-card {
+    width: 300px;
+    height: 350px;
+}
+
+.icon {
+    padding-top: 20px !important;
+}

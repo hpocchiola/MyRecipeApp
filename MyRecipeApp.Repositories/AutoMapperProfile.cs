@@ -11,7 +11,7 @@ namespace MyRecipeApp.Repositories
         {
             CreateMap<Recipe, RecipeDto>()
                 .ForMember(dest => dest.Title, src => src.MapFrom(u => u.Title))
-                .ForMember(dest => dest.Ingredients, src => src.MapFrom(x => x.RecipeIngredient.Select(y => new IngredientDto() { Name = y.Ingredient.Name }).ToList()));
+                .ForMember(dest => dest.Ingredients, src => src.MapFrom(x => x.RecipeIngredients.Select(y => new IngredientDto() { Name = y.Ingredient.Name }).ToList()));
 
             CreateMap<Ingredient, IngredientDto>()
                 .ForMember(dest => dest.Name, src => src.MapFrom(u => u.Name));

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
 import { NavMenu } from './NavMenu';
+import { Grid } from "@mui/material"
 
 export class Layout extends Component {
   static displayName = Layout.name;
@@ -9,9 +9,9 @@ export class Layout extends Component {
     return (
       <div>
         <NavMenu />
-        <Container>
+        <Grid item xs={12}>
           {this.props.children}
-        </Container>
+        </Grid>
       </div>
     );
   }

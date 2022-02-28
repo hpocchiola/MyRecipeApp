@@ -1,6 +1,6 @@
 ﻿using MyRecipeApp.Entities;
 
-namespace MyRecipeApp.Repositories.Interfaces
+namespace MyRecipeApp.Repositories.Implementations
 {
     public interface IIngredientRepository : IBaseRepository<Ingredient>
     {

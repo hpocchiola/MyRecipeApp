@@ -16,20 +16,27 @@ namespace MyRecipeApp.Repositories.Implementations
 
         public ICollection<Recipe> GetRecipesWithIngredients()
         {
-            return this.GetAll(x => x.Include(r => r.RecipeIngredient).ThenInclude(ri => ri.Ingredient)).ToList();
+            return this.GetAll(x => x.Include(r => r.RecipeIngredients).ThenInclude(ri => ri.Ingredient)).ToList();
         }
 
         public ICollection<Recipe> SearchRecipes(SearchFiltersRequest request)
         {
             IQueryable<Recipe> query = Context.Set<Recipe>();
 
-            if (!string.IsNullOrEmpty(request.Text))
-                query = query.Where(r => EF.Functions.Like(r.Title, $"%{request.Text.Trim()}%"));
+            query = query
+                    .Include(r => r.RecipeIngredients)
+                    .ThenInclude(ri => ri.Ingredient);
+
+            if (!string.IsNullOrEmpty(request.Title))
+            {
+                query = query.Where(r => EF.Functions.Like(r.Title, $"%{request.Title.Trim()}%"));
+            }
             if (request.Ingredients != null && request.Ingredients.Any())
             {
-                query = query.Include(r => r.RecipeIngredient).ThenInclude(ri => ri.Ingredient).Where(x => x.RecipeIngredient.Any(y => request.Ingredients.Contains(y.Ingredient.Name)));
+                query = query.ToList()
+                    .Where(recipe => recipe.RecipeIngredients.Select(ri => ri.Ingredient.Name).Intersect(request.Ingredients).Count() == request.Ingredients.Count)
+                    .AsQueryable();
             }
-
             return query.ToList();
         }
     }

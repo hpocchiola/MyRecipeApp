@@ -35,13 +35,13 @@ namespace MyRecipeApp
                 configuration.RootPath = "../MyRecipeApp.ClientApp/build";
             });
 
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy(Constants.Security.CorsPolicies.AllSuiteApps,
-            //         builder => builder.WithOrigins(configurationAccessor.AllSuiteAppsOrigins)
-            //            .AllowAnyHeader()
-            //            .AllowAnyMethod());
-            //});
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Recipes",
+                     builder => builder.WithOrigins("http://localhost:3000")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+            });
 
 
             services.AddAutoMapper(typeof(AutoMapperProfile));
@@ -72,6 +72,7 @@ namespace MyRecipeApp
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+            app.UseCors("Recipes");
 
             app.UseEndpoints(endpoints =>
             {

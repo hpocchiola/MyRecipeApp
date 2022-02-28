@@ -5,6 +5,6 @@ namespace MyRecipeApp.DTOs
     public class RecipeDto
     {
         public string Title { get; set; }
-        public ICollection<IngredientDto> Ingredients { get; set; }
+        public List<IngredientDto> Ingredients { get; set; }
     }
 }

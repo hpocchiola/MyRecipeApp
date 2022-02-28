@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace MyRecipeApp.Entities
 {
@@ -9,6 +10,11 @@ namespace MyRecipeApp.Entities
         [StringLength(100)]
         public string Title { get; set; }
 
-        public virtual ICollection<RecipeIngredient> RecipeIngredient { get; set; }
+        public ICollection<RecipeIngredient> RecipeIngredients { get; set; }
+
+        public bool ContainsAllIngredients(ICollection<string> ingredients)
+        {
+            return this.RecipeIngredients.Select(ri => ri.Ingredient.Name).Intersect(ingredients).Count() == ingredients.Count;
+        }
     }
 }

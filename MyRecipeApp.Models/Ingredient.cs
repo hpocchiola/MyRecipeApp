@@ -9,6 +9,6 @@ namespace MyRecipeApp.Entities
         [StringLength(50)]
         public string Name { get; set; }
 
-        public virtual ICollection<RecipeIngredient> RecipeIngredient { get; set; }
+        public ICollection<RecipeIngredient> RecipeIngredient { get; set; }
     }
 }
