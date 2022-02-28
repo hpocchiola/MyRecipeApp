@@ -11,7 +11,7 @@ export const Home = () => {
         <Typography variant="body1"><a href='https://facebook.github.io/react/'>React</a> for client-side code</Typography>
         <Typography variant="body1"><a href='https://mui.com//'>Material-UI</a> for layout and styling</Typography>
       </ul>
-      <Typography variant="subtitle1">To help you get started, we have also set up:</Typography>
+      <Typography variant="subtitle1">Moreover, the app also has:</Typography>
       <ul>
         <Typography variant="body1"><strong>Client-side navigation.</strong></Typography>
         <Typography variant="body1"><strong>Development server integration</strong>. In development mode, the development server from <code>create-react-app</code> runs in the background automatically, so your client-side resources are dynamically built on demand and the page refreshes when you modify any file.</Typography>

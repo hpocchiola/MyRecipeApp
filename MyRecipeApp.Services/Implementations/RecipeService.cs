@@ -13,39 +13,21 @@ namespace MyRecipeApp.Services.Implementations
     {
         private readonly IRecipeRepository recipeRepository;
         private readonly IMapper mapper;
-        private readonly ILogger<RecipeService> logger;
 
-        public RecipeService(IRecipeRepository recipeRepository, IMapper mapper, ILogger<RecipeService> logger)
+        public RecipeService(IRecipeRepository recipeRepository, IMapper mapper)
         {
             this.recipeRepository = recipeRepository;
             this.mapper = mapper;
-            this.logger = logger;
         }
 
         public ICollection<RecipeDto> GetAllRecipesWithIngredients()
         {
-            try
-            {
-                return this.mapper.Map<List<RecipeDto>>(this.recipeRepository.GetRecipesWithIngredients().ToList());
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex.Message);
-                throw;
-            }
+            return this.mapper.Map<List<RecipeDto>>(this.recipeRepository.GetRecipesWithIngredients().ToList());
         }
 
         public ICollection<RecipeDto> SearchRecipes(SearchFiltersRequest request)
         {
-            try
-            {
-                return this.mapper.Map<List<RecipeDto>>(this.recipeRepository.SearchRecipes(request));
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex.Message);
-                throw;
-            }
+            return this.mapper.Map<List<RecipeDto>>(this.recipeRepository.SearchRecipes(request));
         }
     }
 }

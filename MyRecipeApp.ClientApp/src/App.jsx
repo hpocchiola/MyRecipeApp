@@ -1,19 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout.jsx';
 import { Home } from './components/Home/Home.jsx';
 import { Recipe } from './components/Recipes/Recipe.jsx';
+import { initializeInterceptors } from "./utils/api/axios-interceptors";
 
 import './custom.css'
 
-export default class App extends Component {
+export const App = () => {
 
-  render () {
-    return (
-      <Layout>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/recipes' component={Recipe} />
-      </Layout>
-    );
-  }
+  initializeInterceptors()
+
+  return (
+    <Layout>
+      <Route exact path='/' component={Home} />
+      <Route exact path='/recipes' component={Recipe} />
+    </Layout>
+  );
 }
